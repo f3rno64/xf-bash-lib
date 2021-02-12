@@ -11,29 +11,65 @@ xf_nvm_init() {
   xf_safe_source "$NVM_PATH/nvm.sh"
   xf_safe_source "$NVM_PATH/bash_completion"
 
-  xf_safe_add_dir_to_path "$(xf_get_nvm_latest_node_version_bin_path)"
+  xf_nvm_use_latest
+  xf_safe_add_dir_to_path "$(xf_nvm_latest_local_bin_path)"
 
   # shellcheck disable=1090
   source <(npm completion)
 }
 
-xf_get_nvm_latest_node_version() {
-  local -r NVM_NODE_ROOT_PATH="$NVM_PATH/versions/node"
-
-  if ! xf_has_nvm; then
-    echo "No nvm installation found (expected in $NVM_PATH)"
-    return
-  fi
-
-  if ! xf_has_dir "$NVM_NODE_ROOT_PATH"; then
-    echo "No node installed via nvm (see $NVM_PATH)"
-    return
-  fi
-
-  # shellcheck disable=2012
-  ls -1 -t "$NVM_NODE_ROOT_PATH" | head -n2 | tail -n1
+xf_nvm_remote_versions() {
+  nvm ls-remote --no-colors
 }
 
-xf_get_nvm_latest_node_version_bin_path() {
-  echo "$(xf_get_nvm_latest_node_version)/bin"
+xf_nvm_local_versions() {
+  nvm ls --no-alias --no-colors
+}
+
+xf_nvm_latest_remote_version() {
+  local -r REMOTE_VERSIONS="$(xf_nvm_latest_remote_version)"
+  local -r LATEST_REMOTE_VERSION="$("$REMOTE_VERSIONS" | tail -n1)"
+
+  xf_trim "$LATEST_REMOTE_VERSION" | sed 's/ \*$//'
+}
+
+xf_nvm_latest_local_version() {
+  local -r LOCAL_VERSIONS="$(xf_nvm_local_versions)"
+  local -r LATEST_LOCAL_VERSION="$("$LOCAL_VERSIONS" | tail -n1)"
+
+  xf_trim "$LATEST_LOCAL_VERSION" | sed 's/ \*$//'
+}
+
+# Handles termux PREFIX clobbering
+xf_nvm_use_latest() {
+  if xf_nvm_is_using_latest_local; then return; fi
+
+  local -r LATEST_VERSION="$(xf_nvm_latest_remote_version)"
+
+  if xf_is_termux; then
+    local -r ARGS="--delete-prefix $LATEST_VERSION"
+  else
+    local -r ARGS="$LATEST_VERSION"
+  fi
+
+  nvm use default "$ARGS" --silent
+}
+
+xf_nvm_is_using_latest_local() {
+  local -r LATEST_VERSION="$(xf_nvm_latest_local_version)"
+  local -r ACTIVE_VERSION="$(node --version)"
+
+  if ! "$LATEST_VERSION" ~= "$ACTIVE_VERSION"; then
+    return 1
+  fi
+}
+
+xf_nvm_latest_local_base_path() {
+  local -r LATEST_VERSION="$(xf_nvm_latest_local_version)"
+
+  echo "$NVM_PATH/versions/node/$LATEST_VERSION"
+}
+
+xf_nvm_latest_local_bin_path() {
+  echo "$(xf_nvm_latest_local_base_path)/bin"
 }

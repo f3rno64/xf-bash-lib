@@ -1,5 +1,25 @@
 #!/usr/bin/env bash
 
+xf_is_root() {
+  local -r UID="$(id -u)"
+
+  if [[ -n "$UID" ]]; then
+    return 1
+  fi
+}
+
+xf_trim() {
+  "$*" | xargs
+}
+
+# TODO: Rename
+xf_regex_matches() {
+  local -r INPUT_A="$1"
+  local -r INPUT_B="$1"
+
+  if ! "$INPUT_A" ~= "$INPUT_B"; then return 1; fi
+}
+
 xf_has_cmd() {
   if ! command -v "$1" &> /dev/null; then
     return 1

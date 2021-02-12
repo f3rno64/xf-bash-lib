@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# To be checked by other scripts for lib presence
+export XF_BASH_LIB=1
+
 # shellcheck disable=1090
 source "$XF_BASH_LIB_PATH/lib/core.sh"
 
@@ -13,4 +16,5 @@ xf_rust_init
 xf_rvm_init
 xf_snap_init
 
+# shellcheck disable=1090
 source "$XF_BASH_LIB_PATH/lib/bashrc.sh"

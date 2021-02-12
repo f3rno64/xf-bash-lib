@@ -66,6 +66,7 @@ xf_git_get_repo_url() {
   fi
 }
 
+# TODO: Extract sshpass logic
 xf_git_clone() {
   local -r REPO="$1"
   local -r REPO_URL="$(xf_git_get_repo_url "$REPO")"

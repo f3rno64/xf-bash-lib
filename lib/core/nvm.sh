@@ -8,7 +8,7 @@ xf_nvm_init() {
   if ! xf_has_nvm; then return; fi
 
   xf_safe_source "$(xf_git_repo_path 'dsifford' 'yarn-completion')/yarn-completion.bash"
-  xf_safe_source "$NVM_PATH/nvm.sh"
+  xf_safe_source "$NVM_PATH/nvm.sh" '--no-use'
   xf_safe_source "$NVM_PATH/bash_completion"
 
   xf_nvm_use_latest
@@ -27,17 +27,19 @@ xf_nvm_local_versions() {
 }
 
 xf_nvm_latest_remote_version() {
-  local -r REMOTE_VERSIONS="$(xf_nvm_latest_remote_version)"
-  local -r LATEST_REMOTE_VERSION="$("$REMOTE_VERSIONS" | tail -n1)"
+  local -r VERSION_A="$(xf_nvm_remote_versions | tail -n1)"
+  local -r VERSION_B="${VERSION_A//\*/}"
+  local -r VERSION="${VERSION_B//->/}"
 
-  xf_trim "$LATEST_REMOTE_VERSION" | sed 's/ \*$//'
+  xf_trim "$VERSION"
 }
 
 xf_nvm_latest_local_version() {
-  local -r LOCAL_VERSIONS="$(xf_nvm_local_versions)"
-  local -r LATEST_LOCAL_VERSION="$("$LOCAL_VERSIONS" | tail -n1)"
+  local -r VERSION_A="$(xf_nvm_local_versions | tail -n1)"
+  local -r VERSION_B="${VERSION_A//\*/}"
+  local -r VERSION="${VERSION_B//->/}"
 
-  xf_trim "$LATEST_LOCAL_VERSION" | sed 's/ \*$//'
+  xf_trim "$VERSION"
 }
 
 # Handles termux PREFIX clobbering
@@ -59,9 +61,7 @@ xf_nvm_is_using_latest_local() {
   local -r LATEST_VERSION="$(xf_nvm_latest_local_version)"
   local -r ACTIVE_VERSION="$(node --version)"
 
-  if ! "$LATEST_VERSION" ~= "$ACTIVE_VERSION"; then
-    return 1
-  fi
+  if ! xf_regex_matches "$LATEST_VERSION" "$ACTIVE_VERSION";then return 1; fi
 }
 
 xf_nvm_latest_local_base_path() {

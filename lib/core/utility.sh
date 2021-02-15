@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=1090
 
 xf_is_root() {
   local -r UID="$(id -u)"
@@ -9,15 +10,15 @@ xf_is_root() {
 }
 
 xf_trim() {
-  "$*" | xargs
+  echo "$*" | xargs
 }
 
 # TODO: Rename
 xf_regex_matches() {
   local -r INPUT_A="$1"
-  local -r INPUT_B="$1"
+  local -r INPUT_B="$2"
 
-  if ! "$INPUT_A" ~= "$INPUT_B"; then return 1; fi
+  if [[ ! "$INPUT_A" =~ $INPUT_B ]]; then return 1; fi
 }
 
 xf_has_cmd() {
@@ -69,12 +70,16 @@ xf_resolve_editor() {
 }
 
 xf_safe_source() {
-  local -r SCRIPT_NAME="$*"
+  local -r ARGS=("$@")
+  local -r SCRIPT_NAME="${ARGS[0]}"
 
-  if [[ ! -f $SCRIPT_NAME ]]; then return; fi
+  if [[ ! -f "$SCRIPT_NAME" ]]; then return; fi
 
-  # shellcheck disable=1090
-  source "$SCRIPT_NAME"
+  if [[ "${#ARGS[@]}" -gt 1 ]]; then
+    source "$SCRIPT_NAME" "${ARGS[1]}"
+  else
+    source "$SCRIPT_NAME"
+  fi
 }
 
 xf_safe_add_dir_to_path() {

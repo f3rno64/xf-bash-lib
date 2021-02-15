@@ -72,11 +72,11 @@ gpf() {
 }
 
 gcam() {
-  git commit -am "$*"
+  git commit -am "$1"
 }
 
 gcm() {
-  git commit -m "$*"
+  git commit -m "$1"
 }
 
 gl() {
@@ -84,9 +84,9 @@ gl() {
 }
 
 ga() {
-  git add -p "$*"
+  git add -p "$@"
 }
 
 gd() {
-  git diff "$*"
+  git diff "$@"
 }

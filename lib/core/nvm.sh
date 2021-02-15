@@ -7,9 +7,14 @@ xf_has_nvm() {
 xf_nvm_init() {
   if ! xf_has_nvm; then return; fi
 
+  local -r ORIGINAL_PREFIX="$PREFIX"
+  unset PREFIX
+
   xf_safe_source "$(xf_git_repo_path 'dsifford' 'yarn-completion')/yarn-completion.bash"
   xf_safe_source "$NVM_PATH/nvm.sh" '--no-use'
   xf_safe_source "$NVM_PATH/bash_completion"
+
+  export PREFIX="$ORIGINAL_PREFIX"
 
   xf_nvm_use_latest
   xf_safe_add_dir_to_path "$(xf_nvm_latest_local_bin_path)"
@@ -61,7 +66,7 @@ xf_nvm_is_using_latest_local() {
   local -r LATEST_VERSION="$(xf_nvm_latest_local_version)"
   local -r ACTIVE_VERSION="$(node --version)"
 
-  if ! xf_regex_matches "$LATEST_VERSION" "$ACTIVE_VERSION";then return 1; fi
+  if ! xf_regex_matches "$LATEST_VERSION" "$ACTIVE_VERSION"; then return 1; fi
 }
 
 xf_nvm_latest_local_base_path() {

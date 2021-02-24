@@ -30,6 +30,10 @@ pass-pm() {
   pass otp s/protonmail/otp
 }
 
+pass-gh-ssh() {
+  pass -c ssh/github
+}
+
 pass-gh() {
   pass -c g/github
   pass otp g/github/otp

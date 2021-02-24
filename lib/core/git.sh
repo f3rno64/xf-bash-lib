@@ -28,6 +28,12 @@ xf_git_repo_path() {
   echo "$HOME_SRC_DIR/$HOST/$OWNER/$REPO"
 }
 
+xf_git_current_branch() {
+  local -r BRANCH="$(git branch --no-color --show-current | xargs)"
+
+  echo -n "$BRANCH"
+}
+
 # TODO: Improve username check
 xf_git_is_own_repo() {
   local -r REPO="$1"

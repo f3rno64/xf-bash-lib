@@ -8,8 +8,6 @@ export GIT_EDITOR="$EDITOR"
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 export GIT_DEFAULT_IGNORED=('Session.vim' '.undodir' 'notes')
 
-alias gc='xf_git_clone'
-
 gnew() {
   if xf_has_dir "$(pwd)/.git"; then
     echo $?
@@ -38,21 +36,25 @@ gs() {
   git status
 }
 
-gcgh() {
+gc() {
   local -r DEST="$(xf_git_get_repo_path "$*")"
 
   if xf_has_dir "$DEST"; then
     echo "Directory not empty: $DEST"
-  else
-    mkdir -p "$DEST"
-
-    if ! cd "$DEST"; then
-      echo "Failed to change directory: $DEST"
-      return
-    fi
-
-    xf_git_clone "$*"
+    return 1
   fi
+
+  mkdir -p "$DEST"
+  echo "Created directory $DEST"
+
+  if ! cd "$DEST"; then
+    echo "Failed to change directory: $DEST"
+    return 1
+  else
+    echo "cd $DEST"
+  fi
+
+  xf_git_clone "$*"
 }
 
 gf() {
@@ -69,6 +71,20 @@ gp() {
 
 gpf() {
   git push -u origin HEAD --force
+}
+
+gu() {
+  local -r CURRENT_BRANCH="$(xf_git_current_branch)"
+  local -r BRANCH="${1:-"$CURRENT_BRANCH"}"
+
+  if [[ -z "$BRANCH" ]]; then
+    echo "Resolved no current branch, check the output of 'git branch --show-current'"
+    return 1
+  fi
+
+  echo "Pulling remote branch $BRANCH..."
+
+  git pull origin "$BRANCH"
 }
 
 gcam() {

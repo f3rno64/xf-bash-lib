@@ -72,16 +72,15 @@ xf_git_get_repo_url() {
   fi
 }
 
-# TODO: Extract sshpass logic
 xf_git_clone() {
   local -r REPO="$1"
   local -r REPO_URL="$(xf_git_get_repo_url "$REPO")"
   local -r OPTIONS="$(xf_git_get_clone_options "$REPO")"
+  local -r CLONE_ARGS="$OPTIONS $REPO_URL ."
 
   if xf_git_is_own_repo "$REPO"; then
-    local -r KEYPASS="$(pass ssh/github)"
-    bash -c "SSHPASS=$KEYPASS sshpass -e -Ppassphrase git clone $OPTIONS $REPO_URL ."
+    xf_sshpass_decrypt_prefix_exec_git "$CLONE_ARGS"
   else
-    bash -c "git clone $OPTIONS $REPO_URL ."
+    xf_bash_exec "git clone $CLONE_ARGS"
   fi
 }

@@ -99,3 +99,11 @@ xf_ensure_home_subdir() {
 
 	echo "$DIR"
 }
+
+xf_bash_exec() {
+  local -r COMMAND="$1"
+
+  if [[ -z "$COMMAND" ]]; then return 1; fi
+
+  bash -c "$COMMAND"
+}

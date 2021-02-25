@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 xf_has_nvm() {
+  if xf_is_termux; then
+    echo "In termux, nvm won't be loaded"
+    return 1
+  fi
+
   xf_has_dir "$NVM_PATH"
 }
 

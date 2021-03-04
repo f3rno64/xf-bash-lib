@@ -9,6 +9,24 @@ xf_is_root() {
   fi
 }
 
+xf_is_link() {
+  local -r PATH="$1"
+
+  if [[ ! -h "$PATH" ]]; then return 1; fi
+}
+
+xf_is_file() {
+  local -r PATH="$1"
+
+  if [[ ! -f "$PATH" ]]; then return 1; fi
+}
+
+xf_is_dir() {
+  local -r PATH="$1"
+
+  if [[ ! -d "$PATH" ]]; then return 1; fi
+}
+
 xf_trim() {
   echo "$*" | xargs
 }
@@ -27,12 +45,33 @@ xf_has_cmd() {
   fi
 }
 
-xf_has_dir() {
-  local -r DIR="$1"
+xf_link_to_null() {
+  local -r SOURCE="$1"
+  local -r VERBOSE="${2:-1}"
 
-  if [[ ! -d "$DIR" ]]; then
+
+  if xf_is_link "$SOURCE"; then
+    if "$VERBOSE"; then
+      echo "$SOURCE is already a symbolic link"
+    fi
+
     return 1
   fi
+
+  if xf_is_file "$SOURCE"; then
+    rm "$SOURCE"
+  fi
+
+  ln -s /dev/null "$SOURCE"
+
+  if "$VERBOSE"; then
+    echo "Linked $SOURCE to /dev/null"
+  fi
+}
+
+# TODO: Refactor out
+xf_has_dir() {
+  if ! xf_is_dir "$1"; then return 1; fi
 }
 
 xf_cd_if_dir() {

@@ -44,7 +44,7 @@ xf_sshpass_decrypt_prefix() {
 
 # TODO: Extract constants to root scope
 xf_sshpass_decrypt_prefix_git() {
-  local -r DEFAULT_GITHUB_SSH_PASS_ID="ssh/github"
+  local -r DEFAULT_GITHUB_SSH_PASS_ID="g/github/ssh"
   local -r PASS_PROMPT_GIT_CLONE="passphrase"
   local -r PASS_ID="$DEFAULT_GITHUB_SSH_PASS_ID"
 

@@ -13,8 +13,6 @@ xf_pass_init() {
   export PASSWORD_STORE="$PW_STORE_PATH"
 
   if [[ -x "$PW_STORE_ENV_SH" ]]; then
-  	export PASSWORD_STORE_ENABLE_EXTENSIONS=true
-
     xf_safe_source "$PW_STORE_ENV_SH"
   fi
 }

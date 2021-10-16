@@ -49,7 +49,6 @@ xf_link_to_null() {
   local -r SOURCE="$1"
   local -r VERBOSE="${2:-1}"
 
-
   if xf_is_link "$SOURCE"; then
     if "$VERBOSE"; then
       echo "$SOURCE is already a symbolic link"
@@ -133,10 +132,10 @@ xf_ensure_home_subdir() {
   local -r DIR="$HOME/$1"
 
   if [[ ! -d "$DIR" ]]; then
-	  mkdir -p "$DIR"
+    mkdir -p "$DIR"
   fi
 
-	echo "$DIR"
+  echo "$DIR"
 }
 
 xf_bash_exec() {

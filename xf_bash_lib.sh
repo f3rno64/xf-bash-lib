@@ -9,3 +9,6 @@ source "$XF_BASH_LIB_PATH/lib/core.sh"
 source "$XF_BASH_LIB_PATH/lib/bashrc.sh"
 
 xf_init
+
+source "$XF_BASH_LIB_PATH/lib/functions.sh"
+source "$XF_BASH_LIB_PATH/lib/aliases.sh"

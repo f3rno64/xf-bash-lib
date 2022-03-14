@@ -68,6 +68,14 @@ xf_link_to_null() {
   fi
 }
 
+xf_ensure_dir() {
+  local -r DIR="$1"
+
+  if ! xf_has_dir "$DIR"; then
+    xf_mkdir "$DIR"
+  fi
+}
+
 # TODO: Refactor out
 xf_has_dir() {
   if ! xf_is_dir "$1"; then return 1; fi
@@ -144,4 +152,39 @@ xf_bash_exec() {
   if [[ -z "$COMMAND" ]]; then return 1; fi
 
   bash -c "$COMMAND"
+}
+
+xf_get_user() {
+  if [[ -v $USER ]]; then return "$USER"; fi
+
+  local -r USER="$(whoami)"
+
+  return "$USER"
+}
+
+xf_get_hostname() {
+  if [[ -v $HOSTNAME ]]; then return "$HOSTNAME"; fi
+
+  local -r HOSTNAME="$(hostname)"
+
+  return "$HOSTNAME"
+}
+
+XF_USRDBCTL_DIR_REGEX="s/.*: \(.*\)/\1/"
+
+xf_get_home_path() {
+  if [[ -v $HOME ]]; then return "$HOME"; fi
+
+  local -r RAW_PATH="$(userdbctl user "$USER" | grep Directory)"
+  local -r USER_HOME_PATH="echo $RAW_PATH | sed $XF_USRDBCTL_DIR_REGEX"
+
+  return "$USER_HOME_PATH"
+}
+
+xf_arr_append() {
+  local -n ARRAY=$1
+
+  ARRAY+=("$*")
+
+  return "${ARRAY[@]}"
 }

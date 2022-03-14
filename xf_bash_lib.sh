@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=1090
 
-# To be checked by other scripts for lib presence
-export XF_BASH_LIB=1
-
-source "$XF_BASH_LIB_PATH/lib/init.sh"
-source "$XF_BASH_LIB_PATH/lib/core.sh"
-source "$XF_BASH_LIB_PATH/lib/bashrc.sh"
+source "$(dirname "$0")/lib/init.sh"
+source "$(dirname "$0")/lib/core.sh"
+source "$(dirname "$0")/lib/bashrc.sh"
+source "$(dirname "$0")/lib/functions.sh"
+source "$(dirname "$0")/lib/aliases.sh"
 
 xf_init
-
-source "$XF_BASH_LIB_PATH/lib/functions.sh"
-source "$XF_BASH_LIB_PATH/lib/aliases.sh"

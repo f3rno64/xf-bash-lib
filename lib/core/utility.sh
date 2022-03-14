@@ -186,5 +186,5 @@ xf_arr_append() {
 
   ARRAY+=("$*")
 
-  return "${ARRAY[@]}"
+  return "${ARRAY
 }

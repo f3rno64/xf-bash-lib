@@ -9,9 +9,9 @@ export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 export GIT_DEFAULT_IGNORED=('Session.vim' '.undodir' 'notes')
 
 gnew() {
-  if xf_has_dir "$(pwd)/.git"; then
+  if xf_has_dir "./.git"; then
     echo $?
-    echo "$(pwd)/.git"
+    echo "./.git"
     echo 'This directory already contains a git repo'
     return
   fi

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-source "functions/system.sh"
-source "functions/tmux.sh"
-source "functions/utility.sh"
-source "functions/packages.sh"
-source "functions/journalctl.sh"
-source "functions/systemctl.sh"
+source "$(dirname "$0")/functions/system.sh"
+source "$(dirname "$0")/functions/tmux.sh"
+source "$(dirname "$0")/functions/utility.sh"
+source "$(dirname "$0")/functions/packages.sh"
+source "$(dirname "$0")/functions/journalctl.sh"
+source "$(dirname "$0")/functions/systemctl.sh"

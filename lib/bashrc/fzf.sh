@@ -7,7 +7,7 @@ fzf-cd() {
 
   if [[ -z "$FZF_RES" ]]; then return; fi
 
-  local -r FZF_RES_PATH="$(pwd)/$FZF_RES"
+  local -r FZF_RES_PATH="./$FZF_RES"
 
   if [[ -d "$FZF_RES_PATH" ]]; then
     cd "$FZF_RES_PATH" || return

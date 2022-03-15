@@ -103,7 +103,7 @@ xf_init_error_trap() {
 }
 
 xf_resolve_editor() {
-  local -r OPTIONS=('nvim' 'vim' 'vi' 'nano')
+  local -r OPTIONS=$XF_DESIRED_EDITORS
 
   for WANTED_EDITOR in "${OPTIONS[@]}"; do
     if xf_has_cmd "$WANTED_EDITOR"; then
@@ -111,8 +111,6 @@ xf_resolve_editor() {
       return
     fi
   done
-
-  echo "$EDITOR"
 }
 
 xf_safe_source() {
@@ -159,7 +157,7 @@ xf_get_user() {
 
   local -r USER="$(whoami)"
 
-  return "$USER"
+  echo "$USER"
 }
 
 xf_get_hostname() {
@@ -167,7 +165,7 @@ xf_get_hostname() {
 
   local -r HOSTNAME="$(hostname)"
 
-  return "$HOSTNAME"
+  echo "$HOSTNAME"
 }
 
 XF_USRDBCTL_DIR_REGEX="s/.*: \(.*\)/\1/"
@@ -176,15 +174,58 @@ xf_get_home_path() {
   if [[ -v $HOME ]]; then return "$HOME"; fi
 
   local -r RAW_PATH="$(userdbctl user "$USER" | grep Directory)"
-  local -r USER_HOME_PATH="echo $RAW_PATH | sed $XF_USRDBCTL_DIR_REGEX"
+  local -r USER_HOME_PATH="$(echo \\"$RAW_PATH\\" | sed \\"$XF_USRDBCTL_DIR_REGEX\\")"
 
-  return "$USER_HOME_PATH"
+  echo "$USER_HOME_PATH"
 }
 
-xf_arr_append() {
-  local -n ARRAY=$1
+xf_includes() {
+  local -r ARRAY="$1"
+  local -r QUERY="$2"
 
-  ARRAY+=("$*")
+  for i in "${ARRAY[@]}"
+  do
+    if [[ "$i" -eq "$QUERY" ]]; then
+      return 1
+    fi
+  done
 
-  return "${ARRAY
+  return 0
+}
+
+xf_has_editor() {
+  local -r RESOLVED="$EDITOR"
+  local -r REQUESTED="$1"
+
+  if xf_has_cmd "$RESOLVED"; then
+    if [[ -n "$REQUESTED" ]]; then
+      if [[ "$EDITOR" -eq "$REQUESTED" ]]; then
+        return 0 # requested editor is $EDITOR
+      else
+        return 1 # requested editor differs
+      fi
+    else
+      return 0 # no request and $EDITOR not executable
+    fi
+  else
+    return 1 # $EDITOR not executable
+  fi
+}
+
+xf_echo_array() {
+  local -a -r ARRAY=("$*")
+
+  for i in "${ARRAY[@]}"
+  do
+    echo "$i"
+  done
+}
+
+xf_log_success() {
+  if [[ "$XF_LOGGING" -eq 0 ]]; then return; fi
+
+  local -r MSG="$1"
+
+  clr_cyan "$(echo '> ') " -n
+  clr_green "$MSG"
 }

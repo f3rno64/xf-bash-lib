@@ -14,6 +14,8 @@ xf_pass_init() {
 
   if [[ -x "$PW_STORE_ENV_SH" ]]; then
     xf_safe_source "$PW_STORE_ENV_SH"
+
+    xf_log_success "init pass"
   fi
 }
 

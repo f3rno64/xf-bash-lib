@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
+# shellcheck source-path=./bashrc
 
-# shellcheck disable=1090
-source "$(dirname "$0")/bashrc/git.sh"
-source "$(dirname "$0")/bashrc/pass.sh"
-source "$(dirname "$0")/bashrc/yarn.sh"
-source "$(dirname "$0")/bashrc/fzf.sh"
+pushd ./bashrc &> /dev/null || return
+
+source "./git.sh"
+source "./pass.sh"
+source "./yarn.sh"
+source "./fzf.sh"
+
+popd &> /dev/null || return

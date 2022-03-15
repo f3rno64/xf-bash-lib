@@ -1,9 +1,11 @@
 #! /usr/bin/env bash
 
-if xf_has_cmd 'nvim'; then
-  alias nvim="nvim -u ~/.config/nvim/init.nvim"
+if xf_has_nvim; then
+  alias nvim="nvim -u \$XF_NVIM_CONFIG_PATH"
+  xf_log_success "added nvim alias"
 fi
 
-if xf_has_cmd 'nvim-gtk'; then
-  alias nvim-gtk="nvim-gtk -- -u ~/.config/nvim/ginit.vim"
+if xf_has_nvim_gtk; then
+  alias nvim-gtk="nvim-gtk -- -u \$XF_NVIM_GTK_CONFIG_PATH"
+  xf_log_success "added nvim-gtk alias"
 fi

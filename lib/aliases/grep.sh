@@ -10,14 +10,16 @@ GREP_CMD_ARGS=(
 # }}}
 # {{{ configuration
 
-GREP_CMD_ARGS_STR="$(IFS=, ; echo "${GREP_CMD_ARGS[*]}")"
+GREP_CMD_ARGS_STR="$(IFS=" "; echo "${GREP_CMD_ARGS[*]}")"
 GREP_CONTEXT_SIZE_LN=20
 
 # }}}
 # {{{ aliases
 
 alias gr="grep \$GREP_CMD_ARGS_STR"
-alias gn="grep -B \$GREP_CONTEXT_SIZE_LN"
-alias ga="grep -A \$GREP_CONTEXT_SIZE_LN"
+alias gn="gr -B \$GREP_CONTEXT_SIZE_LN"
+alias ga="gr -A \$GREP_CONTEXT_SIZE_LN"
+
+xf_log_success "added grep aliases"
 
 # }}}

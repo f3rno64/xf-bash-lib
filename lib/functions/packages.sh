@@ -25,58 +25,73 @@ XF_PKG_HOMEBREW_BIN='brew'
 XF_PKG_TERMUX_BIN='pkg'
 
 # }}}
-
 # {{{ fedora
 
-XF_PKG_CMDS_FEDORA=(
-  "dnf install -y"
-  "dnf update -y"
-  "dnf remove -y"
+declare -a XF_PKG_CMDS_FEDORA=(
+  "sudo dnf install -y"
+  "sudo dnf update -y"
+  "sudo dnf remove -y"
   "dnf search"
 )
 
 # }}}
 # {{{ arch
 
-XF_PKG_CMDS_ARCH=(
-  "pacman -S"
-  "pacman -Syyyuuu"
-  "pacman -R"
+declare -a XF_PKG_CMDS_ARCH=(
+  "sudo pacman -S"
+  "sudo pacman -Syyyuuu"
+  "sudo pacman -R"
   "pacman -Q"
 )
 
 # }}}
 # {{{ debian
 
-XF_PKG_CMDS_DEBIAN=(
-  "apt install"
-  "apt update --refresh && apt upgrade"
-  "apt uninstall"
+declare -a XF_PKG_CMDS_DEBIAN=(
+  "sudo apt install"
+  "sudo apt update --refresh && apt upgrade"
+  "sudo apt uninstall"
   "apt search"
 )
 
 # }}}
 # {{{ termux
 
-XF_PKG_CMDS_TERMUX=(
-  "pkg install -y"
-  "pkg update -y && pkg upgrade -y"
-  "pkg remove -y"
+declare -a XF_PKG_CMDS_TERMUX=(
+  "sudo pkg install -y"
+  "sudo pkg update -y && pkg upgrade -y"
+  "sudo pkg remove -y"
   "pkg search"
 )
 
 # }}}
 # {{{ homebrew
 
-XF_PKG_CMDS_HOMEBREW=(
-  "brew install -y"
-  "brew update"
-  "brew remove"
+declare -a XF_PKG_CMDS_HOMEBREW=(
+  "sudo brew install -y"
+  "sudo brew update"
+  "sudo brew remove"
   "brew search"
 )
 
 # }}}
+# {{{ compatibility check & definition
 
+if xf_has_cmd "$XF_PKG_FEDORA_BIN"; then
+  declare -a XF_PKG_CMDS=("${XF_PKG_CMDS_FEDORA[@]}")
+elif xf_has_cmd "$XF_PKG_ARCH_BIN"; then
+  declare -a XF_PKG_CMDS=("${XF_PKG_CMDS_ARCH[@]}")
+elif xf_has_cmd "$XF_PKG_DEBIAN_BIN"; then
+  declare -a XF_PKG_CMDS=("${XF_PKG_CMDS_DEBIAN[@]}")
+elif xf_has_cmd "$XF_PKG_HOMEBREW_BIN"; then
+  declare -a XF_PKG_CMDS=("${XF_PKG_CMDS_HOMEBREW[@]}")
+elif xf_has_cmd "$XF_PKG_TERMUX_BIN"; then
+  declare -a XF_PKG_CMDS=("${XF_PKG_CMDS_TERMUX[@]}")
+else
+  declare -a XF_PKG_CMDS=()
+fi
+
+# }}}
 # {{{ xf_pkg_install
 
 xf_pkg_install() {
@@ -105,60 +120,26 @@ xf_pkg_search() {
 }
 
 # }}}
+# {{{ shortcuts
 
-# {{{ xf_pkg_shortcuts
+pkgi() {
+  xf_pkg_install "$*"
+}
 
-xf_pkg_shortcuts() {
-  pkgi() {
-    xf_pkg_install "$@"
-  }
+pkgs() {
+  xf_pkg_search "$*"
+}
 
-  pkgs() {
-    xf_pkg_search "$@"
-  }
+pkgu() {
+  xf_pkg_update "$*"
+}
 
-  pkgu() {
-    xf_pkg_update "$@"
-  }
+pkgd() {
+  xf_pkg_uninstall "$*"
+}
 
-  pkgd() {
-    xf_pkg_uninstall "$@"
-  }
-
-  pkgr() {
-    pkgd "$@"
-  }
+pkgr() {
+  xf_pkg_uninstall "$*"
 }
 
 # }}}
-# {{{ xf_get_pkg_cmds
-
-xf_get_pkg_cmds() {
-  if xf_has_cmd "$XF_PKG_FEDORA_BIN"; then
-    return "${XF_PKG_CMDS_FEDORA[@]}"
-  elif xf_has_cmd "$XF_PKG_ARCH_BIN"; then
-    return "${XF_PKG_CMDS_ARCH[@]}"
-  elif xf_has_cmd "$XF_PKG_DEBIAN_BIN"; then
-    return "${XF_PKG_CMDS_DEBIAN[@]}"
-  elif xf_has_cmd "$XF_PKG_HOMEBREW_BIN"; then
-    return "${XF_PKG_CMDS_HOMEBREW[@]}"
-  elif xf_has_cmd "$XF_PKG_TERMUX_BIN"; then
-    return "${XF_PKG_CMDS_TERMUX[@]}"
-  fi
-
-  return 0
-}
-
-# }}}
-
-# {{{ compatibility check & definition
-
-XF_PKG_CMDS=$(xf_get_pkg_cmds)
-
-if [[ -z "$XF_PKG_CMDS" ]]; then
-  return
-fi
-
-# }}}
-
-xf_shortcuts "${XF_PKG_CMDS[@]}"

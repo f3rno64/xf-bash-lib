@@ -11,4 +11,6 @@ xf_go_init() {
   export GO_BIN="$GO_PATH/bin"
 
   xf_safe_add_dir_to_path "$GO_BIN"
+
+  xf_log_success "init go"
 }

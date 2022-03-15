@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
+# shellcheck source-path=./aliases
 
-source "$(dirname "$0")/aliases/cat.sh"
-source "$(dirname "$0")/aliases/grep.sh"
-source "$(dirname "$0")/aliases/ls.sh"
-source "$(dirname "$0")/aliases/vim.sh"
+pushd ./aliases &> /dev/null || return
+
+source "./cat.sh"
+source "./grep.sh"
+source "./ls.sh"
+source "./vim.sh"
+
+popd &> /dev/null || return

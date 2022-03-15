@@ -12,4 +12,5 @@ xf_rust_init() {
 
   xf_safe_add_dir_to_path "$CARGO_BIN_PATH"
   xf_safe_source "$CARGO_PATH/env"
+  xf_log_success "init rust"
 }

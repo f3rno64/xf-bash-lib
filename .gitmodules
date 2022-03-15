@@ -1,0 +1,3 @@
+[submodule "vendor/bash_colors"]
+	path = vendor/bash_colors
+	url = https://github.com/mercuriev/bash_colors.git

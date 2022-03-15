@@ -25,7 +25,7 @@ xf_git_repo_path() {
     return 1
   fi
 
-  echo "$HOME_SRC_DIR/$HOST/$OWNER/$REPO"
+  echo "$XF_SRC_DIR/$HOST/$OWNER/$REPO"
 }
 
 xf_git_current_branch() {
@@ -59,7 +59,7 @@ xf_git_get_repo_path() {
   local -r REPO="$1"
   local -r HOST="${2:-$XF_DEFAULT_GIT_HOSTNAME}"
 
-  echo "$HOME_SRC_DIR/$HOST/$REPO"
+  echo "$XF_SRC_DIR/$HOST/$REPO"
 }
 
 xf_git_get_repo_url() {

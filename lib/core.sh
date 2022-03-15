@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
 # shellcheck source-path=./core
 
-pushd ./core &> /dev/null || return
+DIR="$(dirname $BASH_SOURCE)"
 
-source "./utility.sh"
-source "./termux.sh"
-source "./pass.sh"
-source "./fzf.sh"
-source "./gh.sh"
-source "./git.sh"
-source "./go.sh"
-source "./nvm.sh"
-source "./rust.sh"
-source "./rvm.sh"
-source "./snap.sh"
-source "./vim.sh"
-source "./yarn.sh"
-
-popd &> /dev/null || return
+source "$DIR/core/utility.sh"
+source "$DIR/core/termux.sh"
+source "$DIR/core/pass.sh"
+source "$DIR/core/fzf.sh"
+source "$DIR/core/gh.sh"
+source "$DIR/core/git.sh"
+source "$DIR/core/go.sh"
+source "$DIR/core/nvm.sh"
+source "$DIR/core/rust.sh"
+source "$DIR/core/rvm.sh"
+source "$DIR/core/snap.sh"
+source "$DIR/core/vim.sh"
+source "$DIR/core/yarn.sh"

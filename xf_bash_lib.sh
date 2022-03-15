@@ -2,14 +2,14 @@
 # shellcheck disable=1090
 # shellcheck source-path=./lib
 
-source "./vendor/bash_colors/bash_colors.sh"
+DIR="$(dirname "$BASH_SOURCE")"
 
-pushd ./lib &> /dev/null || return
-
-source "./core.sh"
-source "./bashrc.sh"
-source "./functions.sh"
-source './aliases.sh'
+source "$DIR/vendor/bash_colors/bash_colors.sh"
+source "$DIR/lib/util/get_script_dir.sh"
+source "$DIR/lib/core.sh"
+source "$DIR/bashrc.sh"
+source "$DIR/functions.sh"
+source "$DIR/aliases.sh"
 
 xf_pass_init
 xf_fzf_init
@@ -21,5 +21,3 @@ xf_rvm_init
 xf_snap_init
 
 xf_log_success 'init xf-bash-lib'
-
-popd &> /dev/null || return

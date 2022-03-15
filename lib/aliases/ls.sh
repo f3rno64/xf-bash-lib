@@ -13,7 +13,7 @@
 
 # {{{ base ls command arguments
 
-LS_HELP="$(ls --help)"
+LS_HELP="$(ls -h)"
 
 declare -a LS_CMD_ARGS=(
   '--color=always'
@@ -25,6 +25,8 @@ declare -a LS_CMD_ARGS=(
 
 if [[ "$LS_HELP" =~ '--group-directories-first' ]]; then
   LS_CMD_ARGS+=('--group-directories-first')
+
+  xf_log_success "ls alias will group directories"
 fi
 
 # }}}
@@ -32,7 +34,7 @@ fi
 
 LS_CMD_ARGS_STR="$(IFS=" "; echo "${LS_CMD_ARGS[*]}")"
 
-alias ls="ls \$LS_CMD_ARGS_STR"
+alias ls="ls $LS_CMD_ARGS_STR"
 alias ll="ls -al"
 alias lt="ls -alt"
 alias lh="ls -alt .*"

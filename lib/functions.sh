@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 # shellcheck source-path=./functions
 
-pushd ./functions &> /dev/null || return
+DIR="$(dirname $BASH_SOURCE)"
 
-source "./system.sh"
-source "./tmux.sh"
-source "./utility.sh"
-source "./packages.sh"
-source "./journalctl.sh"
-source "./systemctl.sh"
-
-popd &> /dev/null || return
+source "$DIR/functions/system.sh"
+source "$DIR/functions/tmux.sh"
+source "$DIR/functions/utility.sh"
+source "$DIR/functions/packages.sh"
+source "$DIR/functions/journalctl.sh"
+source "$DIR/functions/systemctl.sh"

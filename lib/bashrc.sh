@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 # shellcheck source-path=./bashrc
 
-pushd ./bashrc &> /dev/null || return
+DIR="$(dirname $BASH_SOURCE[0])"
 
-source "./git.sh"
-source "./pass.sh"
-source "./yarn.sh"
-source "./fzf.sh"
+source "$DIR/bashrc/git.sh"
+source "$DIR/bashrc/pass.sh"
+source "$DIR/bashrc/yarn.sh"
+source "$DIR/bashrc/fzf.sh"
+source "$DIR/bashrc/maven.sh"
+source "$DIR/bashrc/perl.sh"
 
 popd &> /dev/null || return

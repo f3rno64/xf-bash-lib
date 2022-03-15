@@ -221,13 +221,26 @@ xf_echo_array() {
   done
 }
 
+# TODO: Improve logging
+
 xf_log_success() {
   if [[ "$XF_LOGGING" -eq 0 ]]; then return; fi
 
   local -r MSG="$1"
 
-  clr_cyan "$(echo '> ') " -n
+  clr_cyan '> ' -n
   clr_green "$MSG"
 }
 
+xf_log_error() {
+  if [[ "$XF_LOGGING" -eq 0 ]]; then return; fi
 
+  local -r MSG="$1"
+  local -r DETAIL="$2"
+
+  clr_cyan '> ' -n
+  clr_red "$MSG"
+
+  clr_cyan '> ' -n
+  clr_red "$DETAIL"
+}

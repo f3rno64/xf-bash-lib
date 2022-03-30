@@ -130,7 +130,7 @@ xf_safe_add_dir_to_path() {
   local -r ENTRY="$1"
 
   if [[ -d "$ENTRY" ]]; then
-    export PATH="$PATH:$ENTRY"
+    export PATH="$ENTRY:$PATH"
   fi
 }
 

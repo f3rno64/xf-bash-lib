@@ -2,10 +2,18 @@
 
 # {{{ base grep command arguments
 
-GREP_CMD_ARGS=(
-  '--color=always'
-  '--group-seperator=|'
-)
+UNAME="$(uname -a)"
+
+if [[ "$UNAME" =~ Darwin ]]; then
+  GREP_CMD_ARGS=(
+    '--color=always'
+  )
+else
+  GREP_CMD_ARGS=(
+    '--color=always'
+    '--group-seperator=|'
+  )
+fi
 
 # }}}
 # {{{ configuration

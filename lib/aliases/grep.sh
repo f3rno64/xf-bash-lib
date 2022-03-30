@@ -25,8 +25,8 @@ GREP_CONTEXT_SIZE_LN=20
 # {{{ aliases
 
 alias gr="grep \$GREP_CMD_ARGS_STR"
-alias gn="gr -B \$GREP_CONTEXT_SIZE_LN"
-alias ga="gr -A \$GREP_CONTEXT_SIZE_LN"
+alias grn="gr -B \$GREP_CONTEXT_SIZE_LN"
+alias gra="gr -A \$GREP_CONTEXT_SIZE_LN"
 
 xf_log_success "added grep aliases"
 

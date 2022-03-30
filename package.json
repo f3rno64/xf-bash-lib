@@ -11,7 +11,7 @@
     "vendor": "vendor"
   },
   "scripts": {
-    "postinstall": "yarn vendor",
+    "postinstall": "npm run vendor",
     "vendor": "git submodule init && git submodule update",
     "gen-readme": "rm README.md && node scripts/gen_readme.js",
     "release": "npm run update-version && git push origin master --follow-tags && npm publish",
@@ -24,8 +24,8 @@
     "lint-core": "./node_modules/.bin/shellcheck -x lib/core/*.sh -P lib/core",
     "lint-functions": "./node_modules/.bin/shellcheck -x lib/functions/*.sh -P lib/functions",
     "lint-util": "./node_modules/.bin/shellcheck -x lib/util/*.sh -P lib/util",
-    "lint": "yarn lint-entry && yarn lint-lib && yarn lint-aliases && yarn lint-bashrc && yarn lint-core && yarn lint-functions && yarn lint-util",
-    "test": "yarn lint"
+    "lint": "npm run lint-entry && npm run lint-lib && npm run lint-aliases && npm run lint-bashrc && npm run lint-core && npm run lint-functions && npm run lint-util",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -58,7 +58,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test"
+      "pre-commit": "npm run test"
     }
   }
 }

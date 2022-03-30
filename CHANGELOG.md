@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.6...v0.0.7) (2022-03-30)
+
+
+### Bug Fixes
+
+* unscope package, add prefix instead ([6d09d6f](https://github.com/f3rno64/xf-bash-lib/commit/6d09d6fccce946bc05804c1f5ac68368b2279601))
+
 ### [0.0.6](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.5...v0.0.6) (2022-03-30)
 
 ### [0.0.5](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.4...v0.0.5) (2022-03-30)

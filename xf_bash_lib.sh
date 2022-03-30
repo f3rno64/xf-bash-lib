@@ -2,7 +2,7 @@
 # shellcheck disable=1090
 # shellcheck source-path=./lib
 
-DIR="$(dirname "$BASH_SOURCE")"
+DIR=$(dirname "${BASH_SOURCE[0]}")
 
 source "$DIR/vendor/bash_colors/bash_colors.sh"
 source "$DIR/lib/util/get_script_dir.sh"

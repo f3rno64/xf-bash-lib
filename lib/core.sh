@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck source-path=./core
 
-DIR="$(dirname $BASH_SOURCE)"
+DIR=$(dirname "${BASH_SOURCE[0]}")
 
 source "$DIR/core/utility.sh"
 source "$DIR/core/termux.sh"

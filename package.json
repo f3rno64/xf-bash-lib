@@ -1,0 +1,56 @@
+{
+  "name": "xf-bash-lib",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Personal bash utility library",
+  "main": "index.js",
+  "engines": {
+    "node": "^17.8.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "vendor": "vendor"
+  },
+  "scripts": {
+    "postinstall": "yarn vendor",
+    "vendor": "git submodule init && git submodule update",
+    "lint-entry": "./node_modules/.bin/shellcheck -x xf_bash_lib.sh",
+    "lint-lib": "./node_modules/.bin/shellcheck -x lib/*.sh -P lib",
+    "lint-aliases": "./node_modules/.bin/shellcheck -x lib/aliases/*.sh -P lib/aliases",
+    "lint-bashrc": "./node_modules/.bin/shellcheck -x lib/bashrc/*.sh -P lib/bashrc",
+    "lint-core": "./node_modules/.bin/shellcheck -x lib/core/*.sh -P lib/core",
+    "lint-functions": "./node_modules/.bin/shellcheck -x lib/functions/*.sh -P lib/functions",
+    "lint-util": "./node_modules/.bin/shellcheck -x lib/util/*.sh -P lib/util",
+    "lint": "yarn lint-entry && yarn lint-lib && yarn lint-aliases && yarn lint-bashrc && yarn lint-core && yarn lint-functions && yarn lint-util",
+    "test": "yarn lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f3rno64/xf-bash-lib.git"
+  },
+  "keywords": [
+    "bash",
+    "utility",
+    "scripts",
+    "dotfiles",
+    "nvm",
+    "rvm",
+    "macos",
+    "termux"
+  ],
+  "author": "Mircea Cristian Mihalache <f3rno64@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/f3rno64/xf-bash-lib/issues"
+  },
+  "homepage": "https://github.com/f3rno64/xf-bash-lib#readme",
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "shellcheck": "^1.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test"
+    }
+  }
+}

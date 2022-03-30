@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #
 # shellcheck disable=2010
+# shellcheck disable=2139
+#
 # We call `ls --help` to check for dir group support
 #
 # Adds helpful ls aliases:

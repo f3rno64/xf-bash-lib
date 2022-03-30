@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# shellcheck source-path=./bashrc
+# shellcheck source-path=.
 
-DIR="$(dirname $BASH_SOURCE[0])"
+DIR=$(dirname "${BASH_SOURCE[0]}")
 
 source "$DIR/bashrc/git.sh"
 source "$DIR/bashrc/pass.sh"

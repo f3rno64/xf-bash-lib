@@ -244,3 +244,13 @@ xf_log_error() {
   clr_cyan '> ' -n
   clr_red "$DETAIL"
 }
+
+xf_is_vtty() {
+  local -r CURRENT_TTY="$(tty)"
+
+  if [[ "$CURRENT_TTY" =~ tty ]]; then
+    return 0
+  else
+    return 1
+  fi
+}

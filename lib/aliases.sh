@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck source-path=./aliases
 
-DIR="$(dirname $BASH_SOURCE)"
+DIR=$(dirname "${BASH_SOURCE[0]}")
 
 source "$DIR/aliases/cat.sh"
 source "$DIR/aliases/grep.sh"

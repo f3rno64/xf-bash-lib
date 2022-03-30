@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck source-path=./functions
 
-DIR="$(dirname $BASH_SOURCE)"
+DIR=$(dirname "${BASH_SOURCE[0]}")
 
 source "$DIR/functions/system.sh"
 source "$DIR/functions/tmux.sh"

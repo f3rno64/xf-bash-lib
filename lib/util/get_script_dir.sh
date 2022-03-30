@@ -1,4 +1,7 @@
 #! /usr/bin/env bash
+# shellcheck disable=2164
+# shellcheck disable=2086
+# shellcheck disable=2005
 
 xf_get_script_dir() {
   local -r SOURCE_FN="${1:${BASH_SOURCE[0]}}"

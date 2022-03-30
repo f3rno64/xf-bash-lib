@@ -1,6 +1,5 @@
 {
   "name": "xf-bash-lib",
-  "private": true,
   "version": "0.0.1",
   "description": "Personal bash utility library",
   "main": "index.js",
@@ -14,6 +13,10 @@
   "scripts": {
     "postinstall": "yarn vendor",
     "vendor": "git submodule init && git submodule update",
+    "gen-readme": "rm README.md && node scripts/gen_readme.js",
+    "release": "npm run update-version && git push origin master --follow-tags",
+    "update-deps": "./node_modules/.bin/updates -u -g -c",
+    "update-version": "./node_modules/.bin/standard-version",
     "lint-entry": "./node_modules/.bin/shellcheck -x xf_bash_lib.sh",
     "lint-lib": "./node_modules/.bin/shellcheck -x lib/*.sh -P lib",
     "lint-aliases": "./node_modules/.bin/shellcheck -x lib/aliases/*.sh -P lib/aliases",
@@ -45,8 +48,13 @@
   },
   "homepage": "https://github.com/f3rno64/xf-bash-lib#readme",
   "devDependencies": {
+    "colors": "^1.4.0",
     "husky": "^7.0.4",
-    "shellcheck": "^1.1.0"
+    "jsdoc-to-markdown": "^7.1.1",
+    "lodash": "^4.17.21",
+    "shellcheck": "^1.1.0",
+    "signale": "^1.4.0",
+    "standard-version": "^9.3.2"
   },
   "husky": {
     "hooks": {

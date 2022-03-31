@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.7...v0.0.8) (2022-03-31)
+
+
+### Bug Fixes
+
+* typo ([8a97461](https://github.com/f3rno64/xf-bash-lib/commit/8a97461320c92bcdd67d0d736d1e0d7102570d8c))
+
 ### [0.0.7](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.6...v0.0.7) (2022-03-30)
 
 

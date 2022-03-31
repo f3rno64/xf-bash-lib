@@ -32,6 +32,23 @@ gnew() {
   done
 }
 
+goradd() {
+  local -r NAME="${1:remote}"
+  local -r URL="$2"
+
+  git remote add "$NAME" "$URL"
+}
+
+grsoft() {
+  local -r LENGTH="$1"
+
+  git reset --soft HEAD^"$LENGTH"
+}
+
+gi() {
+  git init .
+}
+
 gs() {
   git status
 }

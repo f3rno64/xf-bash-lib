@@ -248,7 +248,7 @@ xf_log_error() {
 xf_is_vtty() {
   local -r CURRENT_TTY="$(tty)"
 
-  if [[ "$CURRENT_TTY" =~ tty ]]; then
+  if [[ "$CURRENT_TTY" =~ vtty ]]; then
     return 0
   else
     return 1

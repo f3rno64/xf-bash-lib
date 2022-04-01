@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.11](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.10...v0.0.11) (2022-04-01)
+
+
+### Bug Fixes
+
+* publish with public access by default now ([d9121f0](https://github.com/f3rno64/xf-bash-lib/commit/d9121f0844c91157eee7a8585e226fd317e6ea27))
+
 ### [0.0.10](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.9...v0.0.10) (2022-04-01)
 
 ### [0.0.9](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.7...v0.0.9) (2022-04-01)

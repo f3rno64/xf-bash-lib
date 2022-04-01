@@ -1,6 +1,6 @@
 {
   "name": "@f3rno64/xf-bash-lib",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Personal bash utility library",
   "main": "index.js",
   "engines": {

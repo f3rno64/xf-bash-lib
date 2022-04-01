@@ -14,7 +14,7 @@
     "postinstall": "npm run vendor",
     "vendor": "git submodule init && git submodule update",
     "gen-readme": "rm README.md && node scripts/gen_readme.js",
-    "release": "npm run update-version && git push origin master --follow-tags && npm publish",
+    "release": "npm run update-version && git push origin master --follow-tags && npm publish --access=public",
     "update-deps": "./node_modules/.bin/updates -u -g -c",
     "update-version": "./node_modules/.bin/standard-version",
     "lint-entry": "./node_modules/.bin/shellcheck -x xf_bash_lib.sh",

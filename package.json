@@ -50,12 +50,12 @@
   "homepage": "https://github.com/f3rno64/xf-bash-lib#readme",
   "devDependencies": {
     "colors": "^1.4.0",
-    "husky": "^7.0.4",
-    "jsdoc-to-markdown": "^7.1.1",
+    "husky": "^8.0.3",
+    "jsdoc-to-markdown": "^8.0.0",
     "lodash": "^4.17.21",
-    "shellcheck": "^1.1.0",
+    "shellcheck": "^2.2.0",
     "signale": "^1.4.0",
-    "standard-version": "^9.3.2",
+    "standard-version": "^9.5.0",
     "updates": "^14.1.0"
   },
   "husky": {

@@ -55,7 +55,8 @@
     "lodash": "^4.17.21",
     "shellcheck": "^1.1.0",
     "signale": "^1.4.0",
-    "standard-version": "^9.3.2"
+    "standard-version": "^9.3.2",
+    "updates": "^14.1.0"
   },
   "husky": {
     "hooks": {

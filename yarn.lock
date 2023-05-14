@@ -1864,6 +1864,11 @@ underscore@~1.13.2:
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.6.tgz#04786a1f589dc6c09f761fc5f45b89e935136441"
   integrity sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==
 
+updates@^14.1.0:
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/updates/-/updates-14.1.0.tgz#f30d11a137110eea96e602fa0c0630dc6d546c9e"
+  integrity sha512-KXegaSDhUXaEED8SmBRv8F6RcvP+8dB0YOLli7525mU7sFqF096nYJYr7fMEGvKPIWWbmbhandlcc+pDsoiF7Q==
+
 util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"

@@ -2,9 +2,10 @@
   "name": "@f3rno64/xf-bash-lib",
   "version": "0.0.12",
   "description": "Personal bash utility library",
+  "private": true,
   "main": "index.js",
   "engines": {
-    "node": "^17.8.0"
+    "node": "^20.0.0"
   },
   "directories": {
     "lib": "lib",

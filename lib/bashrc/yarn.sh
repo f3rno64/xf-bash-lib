@@ -8,20 +8,12 @@ ypi() {
   yarn plugin import "$1"
 }
 
-ypl() {
-  yarn plugin list
+ya() {
+  yarn add "$@"
 }
 
-y() {
-  yarn "$@"
-}
-
-yo() {
-  yarn outdated
-}
-
-yinit() {
-  yarn init
+yad() {
+  yarn add -D "$@"
 }
 
 ycl() {

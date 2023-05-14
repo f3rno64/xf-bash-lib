@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.12...v0.0.13) (2023-05-14)
+
+
+### Features
+
+* add btctl shortcut if bluetoothctl available ([a94f387](https://github.com/f3rno64/xf-bash-lib/commit/a94f387c254af3ab2cc90afd5ba13bbec41df422))
+
+
+### Bug Fixes
+
+* linter ([3956419](https://github.com/f3rno64/xf-bash-lib/commit/3956419ab62b4054c5f4fc8136c65a2c6ae926f9))
+
 ### [0.0.12](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.11...v0.0.12) (2022-04-01)
 
 ### [0.0.11](https://github.com/f3rno64/xf-bash-lib/compare/v0.0.10...v0.0.11) (2022-04-01)

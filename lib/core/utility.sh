@@ -174,7 +174,7 @@ xf_get_home_path() {
   if [[ -v $HOME ]]; then return "$HOME"; fi
 
   local -r RAW_PATH="$(userdbctl user "$USER" | grep Directory)"
-  local -r USER_HOME_PATH="$(echo \\"$RAW_PATH\\" | sed \\"$XF_USRDBCTL_DIR_REGEX\\")"
+  local -r USER_HOME_PATH="$(printf '"%s"' "$RAW_PATH" | sed \\"$XF_USRDBCTL_DIR_REGEX\\")"
 
   echo "$USER_HOME_PATH"
 }
@@ -228,7 +228,7 @@ xf_log_success() {
 
   local -r MSG="$1"
 
-  clr_cyan '> ' -n
+  clr_cyan "> " -n
   clr_green "$MSG"
 }
 
@@ -238,10 +238,10 @@ xf_log_error() {
   local -r MSG="$1"
   local -r DETAIL="$2"
 
-  clr_cyan '> ' -n
+  clr_cyan "> " -n
   clr_red "$MSG"
 
-  clr_cyan '> ' -n
+  clr_cyan "> " -n
   clr_red "$DETAIL"
 }
 

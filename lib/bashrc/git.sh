@@ -53,6 +53,12 @@ gs() {
   git status
 }
 
+gco() {
+  local -r BRANCH="$1"
+
+  git checkout "$BRANCH"
+}
+
 gc() {
   local -r DEST="$(xf_git_get_repo_path "$*")"
 

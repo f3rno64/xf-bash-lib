@@ -3,6 +3,7 @@
 
 DIR=$(dirname "${BASH_SOURCE[0]}")
 
+source "$DIR/bashrc/black.sh"
 source "$DIR/bashrc/git.sh"
 source "$DIR/bashrc/pass.sh"
 source "$DIR/bashrc/yarn.sh"

@@ -3,6 +3,7 @@
 
 DIR=$(dirname "${BASH_SOURCE[0]}")
 
+source "$DIR/aliases/git.sh"
 source "$DIR/aliases/cat.sh"
 source "$DIR/aliases/grep.sh"
 source "$DIR/aliases/ls.sh"

@@ -1,9 +1,5 @@
 # f3rno64/xf-bash-lib
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 A utility bash library for my personal dotfiles, sourcing utilities like `nvm`
 and `rvm` based on their availability, and configuring the bash environment for
 the host OS.

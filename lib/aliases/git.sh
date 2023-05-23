@@ -10,3 +10,4 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 alias ga="git add -p"
 alias gd="git diff"
 alias gs="git status"
+alias gfoa="git fetch --all --tags"

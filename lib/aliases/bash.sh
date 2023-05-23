@@ -12,3 +12,7 @@ if [[ "$UNAME" =~ Darwin ]]; then
     alias bash="\$SYSTEM_BASH"
   fi
 fi
+
+if xf_has_cmd "moar"; then
+  alias less="moar"
+fi

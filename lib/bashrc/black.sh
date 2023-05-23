@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
-black() {
-  ~/.local/bin/black --line-length 79 --fast "$@"
-}
+if xf_has_cmd "black"; then
+  black() {
+    ~/.local/bin/black --line-length 79 --fast "$@"
+  }
+fi

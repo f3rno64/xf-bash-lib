@@ -12,5 +12,3 @@ if [[ "$UNAME" =~ Darwin ]]; then
     alias bash="\$SYSTEM_BASH"
   fi
 fi
-
-alias c="cd"

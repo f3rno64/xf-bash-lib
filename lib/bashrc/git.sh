@@ -8,6 +8,22 @@ export GIT_EDITOR="$EDITOR"
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 export GIT_DEFAULT_IGNORED=('Session.vim' '.undodir' 'notes')
 
+gpo() {
+  local -r CURRENT_BRANCH="$(xf_git_current_branch)"
+
+  git pull origin "$CURRENT_BRANCH"
+}
+
+gmpr() {
+  local -r PR_ID="$1"
+  local -r TARGET_BRANCH="${2:-main}"
+
+  git checkout "$TARGET_BRANCH"
+  gh pr checkout "$PR_ID"
+  git switch "$TARGET_BRANCH"
+  git merge -S --no-ff -
+}
+
 gnew() {
   if xf_has_dir "./.git"; then
     echo $?
@@ -45,18 +61,16 @@ grsoft() {
   git reset --soft HEAD^"$LENGTH"
 }
 
-gi() {
-  git init .
-}
-
-gs() {
-  git status
-}
-
 gco() {
   local -r BRANCH="$1"
 
   git checkout "$BRANCH"
+}
+
+gcob() {
+  local -r BRANCH="$1"
+
+  git checkout -b "$BRANCH"
 }
 
 gc() {
@@ -81,19 +95,23 @@ gc() {
 }
 
 gf() {
-  local -r ORIGIN="${1:-'origin'}"
-  local -r REMOTE_BRANCH="${2:-'master'}"
-  local -r LOCAL_BRANCH="${3:-"$REMOTE_BRANCH"}"
+  local -r REMOTE_BRANCH="${1:-$(xf_git_current_branch)}"
+  local -r LOCAL_BRANCH="${2:-"$REMOTE_BRANCH"}"
+  local -r ORIGIN="${3:-origin}"
 
   git fetch "$ORIGIN" "$REMOTE_BRANCH":"$LOCAL_BRANCH"
 }
 
 gp() {
-  git push -u origin HEAD --tags
+  local -r CURRENT_BRANCH="${1:-$(xf_git_current_branch)}"
+
+  git push -u origin "$CURRENT_BRANCH" --tags
 }
 
 gpf() {
-  git push -u origin HEAD --force
+  local -r CURRENT_BRANCH="${1:-$(xf_git_current_branch)}"
+
+  git push -u origin "$CURRENT_BRANCH" --force
 }
 
 gu() {
@@ -108,24 +126,4 @@ gu() {
   echo "Pulling remote branch $BRANCH..."
 
   git pull origin "$BRANCH"
-}
-
-gcam() {
-  git commit -am "$1"
-}
-
-gcm() {
-  git commit -m "$1"
-}
-
-gl() {
-  git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s%Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-}
-
-ga() {
-  git add -p "$@"
-}
-
-gd() {
-  git diff "$@"
 }

@@ -2,7 +2,7 @@
 
 alias gb="git branch"
 alias gbd="git branch -D"
-alias gt="git tags"
+alias gt="git tag"
 alias gtd="git tag -D"
 alias gcam="git commit -am"
 alias gcm="git commit -m"

@@ -49,7 +49,7 @@ declare -a XF_PKG_CMDS_ARCH=(
 
 declare -a XF_PKG_CMDS_DEBIAN=(
   "sudo apt install -y"
-  "sudo apt update --refresh && apt upgrade"
+  "sudo apt update && apt upgrade"
   "sudo apt remove"
   "apt search"
 )

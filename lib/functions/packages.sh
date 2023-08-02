@@ -48,9 +48,9 @@ declare -a XF_PKG_CMDS_ARCH=(
 # {{{ debian
 
 declare -a XF_PKG_CMDS_DEBIAN=(
-  "sudo apt install"
+  "sudo apt install -y"
   "sudo apt update --refresh && apt upgrade"
-  "sudo apt uninstall"
+  "sudo apt remove"
   "apt search"
 )
 

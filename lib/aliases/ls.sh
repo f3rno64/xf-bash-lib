@@ -36,10 +36,17 @@ fi
 
 LS_CMD_ARGS_STR="$(IFS=" "; echo "${LS_CMD_ARGS[*]}")"
 
-alias ls="ls $LS_CMD_ARGS_STR"
-alias ll="ls -al"
-alias lt="ls -alt"
-alias lh="ls -alt .*"
+if command -v lsd >/dev/null 2>&1; then
+  alias ls="lsd $LS_CMD_ARGS_STR"
+  alias ll="lsd -al"
+  alias lt="lsd -alt"
+  alias lh="lsd -alt .*"
+else
+  alias ls="ls $LS_CMD_ARGS_STR"
+  alias ll="ls -al"
+  alias lt="ls -alt"
+  alias lh="ls -alt .*"
+fi
 
 xf_log_success "added ls aliases"
 

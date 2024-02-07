@@ -1,3 +1,1 @@
-const getLogger = require('lib/node/get_logger')
-
-module.exports = { getLogger }
+module.exports = {}

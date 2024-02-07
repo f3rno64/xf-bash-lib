@@ -1,0 +1,60 @@
+{
+  "name": "@f3rno64/xf-bash-lib",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A utility bash library for my personal dotfiles.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "format": "shfmt -ln bash -fn -sr -ci -i 2 -w xf_bash_lib.sh lib/**/*",
+    "format:check": "shfmt -ln bash -fn -sr -ci -i 2 -l xf_bash_lib.sh lib/**/*",
+    "lint": "pnpm lint:markdownlint && pnpm lint:eslint",
+    "lint:fix": "pnpm lint:markdownlint:fix && pnpm lint:eslint:fix",
+    "lint:eslint": "eslint -f stylish --ext .json package.json",
+    "lint:eslint:fix": "eslint -f stylish --fix --ext .json package.json",
+    "lint:markdownlint": "markdownlint README.md",
+    "lint:markdownlint:fix": "markdownlint --fix README.md",
+    "test": "pnpm format:check && pnpm lint",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f3rno64/xf-bash-lib.git"
+  },
+  "keywords": [
+    "bash",
+    "library",
+    "nvm",
+    "nvim",
+    "yarn",
+    "rvm",
+    "rust",
+    "snap",
+    "go",
+    "git",
+    "fzf",
+    "termux",
+    "utility",
+    "bashrc"
+  ],
+  "author": "Cris Mihalache <f3rno64@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/f3rno64/xf-bash-lib/issues"
+  },
+  "homepage": "https://github.com/f3rno64/xf-bash-lib#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0",
+    "@commitlint/format": "^18.6.0",
+    "@commitlint/types": "^18.6.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-json": "^3.1.0",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.2",
+    "markdownlint-cli": "^0.39.0",
+    "remark": "^15.0.1"
+  }
+}

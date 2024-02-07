@@ -1,0 +1,5 @@
+{
+  "*.json": ["eslint"],
+  "*.sh": ["shellcheck"],
+  "README.md": ["markdownlint"]
+}

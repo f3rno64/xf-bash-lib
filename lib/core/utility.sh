@@ -105,7 +105,7 @@ xf_init_error_trap() {
 }
 
 xf_resolve_editor() {
-  local -r OPTIONS=$XF_DESIRED_EDITORS
+  local -r OPTIONS="$XF_DESIRED_EDITORS"
 
   for WANTED_EDITOR in "${OPTIONS[@]}"; do
     if xf_has_cmd "$WANTED_EDITOR"; then

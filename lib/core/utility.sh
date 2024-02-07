@@ -43,6 +43,8 @@ xf_has_cmd() {
   if ! command -v "$1" &> /dev/null; then
     return 1
   fi
+
+  return 0
 }
 
 xf_link_to_null() {

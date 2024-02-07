@@ -11,7 +11,6 @@ source "$DIR/bashrc.sh"
 source "$DIR/functions.sh"
 source "$DIR/aliases.sh"
 
-xf_pass_init
 xf_fzf_init
 xf_gh_init
 xf_go_init

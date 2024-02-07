@@ -5,7 +5,6 @@ DIR=$(dirname "${BASH_SOURCE[0]}")
 
 source "$DIR/core/utility.sh"
 source "$DIR/core/termux.sh"
-source "$DIR/core/pass.sh"
 source "$DIR/core/fzf.sh"
 source "$DIR/core/gh.sh"
 source "$DIR/core/git.sh"

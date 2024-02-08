@@ -20,3 +20,5 @@ xf_rvm_init
 xf_snap_init
 
 xf_log_success 'init xf-bash-lib'
+
+export XF_LOADED=1

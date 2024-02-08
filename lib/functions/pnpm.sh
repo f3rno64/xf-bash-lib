@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pnaD() {
+pnad() {
   pnpm add -D "$1"
 }
 

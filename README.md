@@ -176,7 +176,7 @@ The following commands use the system package manager. **dnf**, **pacman**,
 #### [**`pnpm`**][pnpm-url] Commands
 
 - **pna \<...packages\>** -- runs **pnpm add** with all specified packages
-- **pnaD \<...packages\>** -- runs **pnpm add -D** with all specified packages
+- **pnad \<...packages\>** -- runs **pnpm add -D** with all specified packages
 
 #### System Commands
 

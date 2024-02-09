@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ghrs() {
-  gh search repos --sort stars --visibility public "$0"
+  gh search repos --visibility public "$0"
 }
 
 ghro() {

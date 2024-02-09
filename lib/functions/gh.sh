@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
 ghrs() {
-  gh search repos --visibility public "$0"
+  if [[ -z "$1" ]]; then
+    echo "Usage: ghrs <search query>"
+    return 1
+  fi
+
+  gh search repos --sort stars --visibility public "$1"
 }
 
 ghro() {
-  if [[ -z "$0" ]]; then
+  if [[ -z "$1" ]]; then
     gh repo view --web
   else
-    gh repo view "$0" --web
+    gh repo view "$1" --web
   fi
 }

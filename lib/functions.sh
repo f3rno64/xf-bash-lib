@@ -3,6 +3,7 @@
 
 DIR=$(dirname "${BASH_SOURCE[0]}")
 
+source "$DIR/functions/gh.sh"
 source "$DIR/functions/tmux.sh"
 source "$DIR/functions/pnpm.sh"
 source "$DIR/functions/system.sh"

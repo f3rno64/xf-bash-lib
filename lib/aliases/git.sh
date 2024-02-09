@@ -15,5 +15,5 @@ alias gst="git stash"
 alias gstd="git stash drop"
 alias grsoft="git reset --soft HEAD^"
 alias grhard="git reset --hard HEAD^"
-alias gpl='git pull origin $(git branch --show-current)'
+alias gpl="git pull origin"
 alias gcchup="git commit -am 'chore: update'"

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 ghrs() {
-  if [[ -z "$1" ]]; then
+  if [[ -z "$*" ]]; then
     echo "Usage: ghrs <search query>"
     return 1
   fi
 
-  gh search repos --sort stars --visibility public "$1"
+  gh search repos --sort stars --visibility public "$@"
 }
 
 ghro() {

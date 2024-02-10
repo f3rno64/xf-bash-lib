@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 jctl() {
-  sudo journalctl -u "$@"
+  if [[ -z "$1" ]]; then
+    echo "Usage: jctl <unit>"
+  fi
+
+  sudo journalctl -u "$1"
 }
 
 jctlf() {

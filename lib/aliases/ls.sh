@@ -64,15 +64,21 @@ LS_CMD_ARGS_STR="$(IFS=" "; echo "${LS_CMD_ARGS[*]}")"
 if xf_has_cmd 'lsd'; then
   alias ls="lsd $LSD_CMD_ARGS_STR"
   alias ll="lsd $LSD_CMD_ARGS_STR -l"
+  alias lla="lsd $LSD_CMD_ARGS_STR -l -a"
   alias lt="lsd $LSD_CMD_ARGS_STR -l -t"
+  alias lta="lsd $LSD_CMD_ARGS_STR -l -t -a"
   alias lh="lsd $LSD_CMD_ARGS_STR -l -t .*"
+  alias lh="lsd $LSD_CMD_ARGS_STR -l -t -a .*"
 
   xf_log_success 'added ls aliases using lsd'
 else
   alias ls="ls $LS_CMD_ARGS_STR"
   alias ll="ls $LS_CMD_ARGS_STR -l"
+  alias lla="ls $LS_CMD_ARGS_STR -l -a"
   alias lt="ls $LS_CMD_ARGS_STR -l -t"
+  alias lta="ls $LS_CMD_ARGS_STR -l -t -a "
   alias lh="ls $LS_CMD_ARGS_STR -l -t .*"
+  alias lha="ls $LS_CMD_ARGS_STR -l -t -a .*"
 
   xf_log_success 'added ls aliases'
 fi

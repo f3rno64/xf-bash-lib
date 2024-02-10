@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 alias pn="pnpm"
+alias pno="pnpm outdated"
+alias pni="pnpm install"
 alias pns="pnpm start"
 alias pnt="pnpm test"
 alias pntc="pnpm test:coverage"

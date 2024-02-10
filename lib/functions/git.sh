@@ -127,3 +127,9 @@ gu() {
 
   git pull origin "$BRANCH"
 }
+
+grstst() {
+  local -r FILE="${1:filename}"
+
+  git restore --staged "$FILE"
+}

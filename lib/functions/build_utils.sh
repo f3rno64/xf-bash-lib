@@ -27,11 +27,3 @@ mk() {
 mki() {
   sudo make install
 }
-
-cargomk() {
-  cargo build --release
-}
-
-cargoin() {
-  cargo install --path .
-}

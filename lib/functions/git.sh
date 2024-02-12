@@ -128,6 +128,22 @@ gu() {
   git pull origin "$BRANCH"
 }
 
+grst() {
+  local -r FILE="${1:filename}"
+
+  read -r -p "Are you sure you want to restore $FILE?" answer
+
+  case ${answer:0:1} in
+      y|Y )
+          git restore "$FILE"
+      ;;
+      * )
+          return
+      ;;
+  esac
+
+  git restore "$FILE"
+}
 grstst() {
   local -r FILE="${1:filename}"
 

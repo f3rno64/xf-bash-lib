@@ -10,7 +10,7 @@ kk() {
     return 1
   fi
 
-  sudo killall "$1" -9
+  killall "$1" -9
 }
 
 mnt() {
